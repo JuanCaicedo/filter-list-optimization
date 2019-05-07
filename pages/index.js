@@ -1,14 +1,18 @@
-import Link from "next/link";
-import Header from "../components/header";
+import Link from 'next/link';
+import * as R from 'ramda';
+import Header from '../components/header';
+import { OrbsList } from '../components/OrbsList';
+
+const ONE_MILLION = 100000;
+
+const orbs = R.range(1, ONE_MILLION);
 
 function Index() {
   return (
     <main>
       <Header />
       <section>
-        <Link href="/about">
-          <a>Go to About Me</a>
-        </Link>
+        <OrbsList orbs={orbs} />
       </section>
     </main>
   );
