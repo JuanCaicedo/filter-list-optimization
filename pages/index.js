@@ -5,9 +5,9 @@ import * as R from 'ramda';
 import Header from '../components/header';
 import { OrbsList } from '../components/OrbsList';
 
-const ONE_MILLION = 100000;
+const TEN_THOUSAND = 10000;
 
-const orbs = R.range(1, ONE_MILLION);
+const orbs = R.range(1, TEN_THOUSAND).map(R.toString);
 
 class Index extends React.Component {
   setQuery = e => {
