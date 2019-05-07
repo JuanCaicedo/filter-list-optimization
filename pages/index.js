@@ -9,9 +9,7 @@ const TEN_THOUSAND = 10000;
 const numbers = R.range(1, TEN_THOUSAND).map(R.toString);
 
 class Index extends React.Component {
-  setQuery = e => {
-    const searchInput = e.target.value;
-
+  setQuery = searchInput => {
     this.props.router.replace({
       pathname: '/',
       query: { q: searchInput }
@@ -30,7 +28,7 @@ class Index extends React.Component {
         <FilterableNumbersList
           numbers={filteredNumbers}
           setQuery={this.setQuery}
-          query={this.props.router.query.q}
+          initialQuery={this.props.router.query.q}
         />
       </main>
     );
