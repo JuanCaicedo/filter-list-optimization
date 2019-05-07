@@ -7,15 +7,17 @@ const ONE_MILLION = 100000;
 
 const orbs = R.range(1, ONE_MILLION);
 
-function Index() {
-  return (
-    <main>
-      <Header />
-      <section>
-        <OrbsList orbs={orbs} />
-      </section>
-    </main>
-  );
+class Index extends React.Component {
+  render() {
+    return (
+      <main>
+        <Header />
+        <section>
+          <OrbsList orbs={orbs} />
+        </section>
+      </main>
+    );
+  }
 }
 
 export default Index;
