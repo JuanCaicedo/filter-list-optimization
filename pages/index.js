@@ -3,7 +3,7 @@ import * as React from 'react';
 import { withRouter } from 'next/router';
 import * as R from 'ramda';
 import Header from '../components/header';
-import { OrbsList } from '../components/OrbsList';
+import { FilterableOrbsList } from '../components/FilterableOrbsList';
 
 const TEN_THOUSAND = 10000;
 
@@ -28,15 +28,11 @@ class Index extends React.Component {
     return (
       <main>
         <Header />
-        <section>
-          <input
-            type="text"
-            placeholder="Search orbs"
-            value={this.props.router.query.q}
-            onChange={this.setQuery}
-          />
-          <OrbsList orbs={filteredOrbs} />
-        </section>
+        <FilterableOrbsList
+          orbs={filteredOrbs}
+          setQuery={this.setQuery}
+          query={this.props.router.query.q}
+        />
       </main>
     );
   }
