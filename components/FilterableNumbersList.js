@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { NumbersList } from './NumbersList';
 import { withRouter } from 'next/router';
+import { DebounceInput } from 'react-debounce-input';
 
 class _FilterableNumbersList extends React.Component {
   state = {
@@ -30,11 +31,12 @@ class _FilterableNumbersList extends React.Component {
 
     return (
       <section>
-        <input
+        <DebounceInput
           type="text"
           placeholder="Search numbers"
           value={this.state.query}
           onChange={this.updateQuery}
+          debounceTimeout={300}
         />
         <NumbersList numbers={filteredNumbers} />
       </section>
