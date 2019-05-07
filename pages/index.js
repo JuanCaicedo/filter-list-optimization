@@ -13,13 +13,18 @@ class Index extends React.Component {
   setQuery = e => {
     const searchInput = e.target.value;
 
-    this.props.router.replace('/', {
+    this.props.router.replace({
       pathname: '/',
       query: { q: searchInput }
     });
   };
 
   render() {
+    const searchInput = this.props.router.query.q;
+    const filteredOrbs = searchInput
+      ? orbs.filter(orb => orb.includes(searchInput))
+      : orbs;
+
     return (
       <main>
         <Header />
@@ -29,7 +34,7 @@ class Index extends React.Component {
             placeholder="Search orbs"
             onChange={this.setQuery}
           />
-          <OrbsList orbs={orbs} />
+          <OrbsList orbs={filteredOrbs} />
         </section>
       </main>
     );
