@@ -1,19 +1,33 @@
 import * as React from 'react';
 import { NumbersList } from './NumbersList';
+import { withRouter } from 'next/router';
 
-export class FilterableNumbersList extends React.Component {
+class _FilterableNumbersList extends React.Component {
   state = {
-    query: this.props.initialQuery
+    query: this.props.router.query.q
+  };
+
+  updateRouter = query => {
+    this.props.router.replace({
+      pathname: '/',
+      query: { q: query }
+    });
   };
 
   updateQuery = e => {
     const value = e.target.value;
     this.setState({ query: value }, () => {
-      this.props.setQuery(value);
+      this.updateRouter(value);
     });
   };
 
   render() {
+    const { numbers } = this.props;
+    const searchInput = this.state.query;
+    const filteredNumbers = searchInput
+      ? numbers.filter(number => number.includes(searchInput))
+      : numbers;
+
     return (
       <section>
         <input
@@ -22,8 +36,10 @@ export class FilterableNumbersList extends React.Component {
           value={this.state.query}
           onChange={this.updateQuery}
         />
-        <NumbersList numbers={this.props.numbers} />
+        <NumbersList numbers={filteredNumbers} />
       </section>
     );
   }
 }
+
+export const FilterableNumbersList = withRouter(_FilterableNumbersList);
