@@ -3,11 +3,11 @@ import * as React from 'react';
 import { withRouter } from 'next/router';
 import * as R from 'ramda';
 import Header from '../components/header';
-import { FilterableOrbsList } from '../components/FilterableOrbsList';
+import { FilterableNumbersList } from '../components/FilterableNumbersList';
 
 const TEN_THOUSAND = 10000;
 
-const orbs = R.range(1, TEN_THOUSAND).map(R.toString);
+const numbers = R.range(1, TEN_THOUSAND).map(R.toString);
 
 class Index extends React.Component {
   setQuery = e => {
@@ -21,15 +21,15 @@ class Index extends React.Component {
 
   render() {
     const searchInput = this.props.router.query.q;
-    const filteredOrbs = searchInput
-      ? orbs.filter(orb => orb.includes(searchInput))
-      : orbs;
+    const filteredNumbers = searchInput
+      ? numbers.filter(number => number.includes(searchInput))
+      : numbers;
 
     return (
       <main>
         <Header />
-        <FilterableOrbsList
-          orbs={filteredOrbs}
+        <FilterableNumbersList
+          numbers={filteredNumbers}
           setQuery={this.setQuery}
           query={this.props.router.query.q}
         />

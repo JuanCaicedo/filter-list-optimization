@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { OrbsList } from './OrbsList';
+import { NumbersList } from './NumbersList';
 
-export class FilterableOrbsList extends React.Component {
+export class FilterableNumbersList extends React.Component {
   render() {
     return (
       <section>
         <input
           type="text"
-          placeholder="Search orbs"
+          placeholder="Search numbers"
           value={this.props.query}
           onChange={this.props.setQuery}
         />
-        <OrbsList orbs={this.props.orbs} />
+        <NumbersList numbers={this.props.numbers} />
       </section>
     );
   }
