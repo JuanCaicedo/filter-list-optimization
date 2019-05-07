@@ -11,8 +11,7 @@ const orbs = R.range(1, ONE_MILLION);
 
 class Index extends React.Component {
   setQuery = e => {
-    // const searchInput = e.target.value;
-    const searchInput = 'test';
+    const searchInput = e.target.value;
 
     this.props.router.replace('/', {
       pathname: '/',
@@ -25,7 +24,11 @@ class Index extends React.Component {
       <main>
         <Header />
         <section>
-          <button onClick={this.setQuery}>Update search</button>
+          <input
+            type="text"
+            placeholder="Search orbs"
+            onChange={this.setQuery}
+          />
           <OrbsList orbs={orbs} />
         </section>
       </main>
