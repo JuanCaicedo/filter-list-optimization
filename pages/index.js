@@ -2,7 +2,6 @@ import Link from 'next/link';
 import * as React from 'react';
 import { withRouter } from 'next/router';
 import * as R from 'ramda';
-import Header from '../components/header';
 import { FilterableNumbersList } from '../components/FilterableNumbersList';
 
 const TEN_THOUSAND = 10000;
@@ -27,7 +26,7 @@ class Index extends React.Component {
 
     return (
       <main>
-        <Header />
+        <h1>Searchable numbers list</h1>
         <FilterableNumbersList
           numbers={filteredNumbers}
           setQuery={this.setQuery}
