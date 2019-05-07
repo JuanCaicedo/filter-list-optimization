@@ -32,6 +32,7 @@ class Index extends React.Component {
           <input
             type="text"
             placeholder="Search orbs"
+            value={this.props.router.query.q}
             onChange={this.setQuery}
           />
           <OrbsList orbs={filteredOrbs} />
