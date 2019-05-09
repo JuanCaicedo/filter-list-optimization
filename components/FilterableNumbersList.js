@@ -32,6 +32,7 @@ class _FilterableNumbersList extends React.Component {
     return (
       <section>
         <DebounceInput
+          className="search-box"
           type="text"
           placeholder="Search numbers"
           value={this.state.query}
